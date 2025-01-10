@@ -8,7 +8,7 @@ load_dotenv()
 BASE_API_URL = "https://api.langflow.astra.datastax.com"
 LANGFLOW_ID = "9013a235-fb25-4adc-9095-e285cb8cee04"
 FLOW_ID = "d179e3e6-3a12-4fad-8313-469ecc7d5e40"
-APPLICATION_TOKEN = os.environ.get("APP_TOKEN")
+#APPLICATION_TOKEN = os.environ.get("APP_TOKEN")
 ENDPOINT = "galgo-ai"
 
 def run_flow(message: str) -> dict:
@@ -20,7 +20,12 @@ def run_flow(message: str) -> dict:
         "input_type": "chat",
     }
 
-    headers = {"Authorization": "Bearer " + APPLICATION_TOKEN, "Content-Type": "application/json"}
+    headers = {
+        #"Authorization": "Bearer " + APPLICATION_TOKEN, 
+        "Authorization": "Bearer " + st.secrets["APP_TOKEN"], 
+        "Content-Type": "application/json"
+    }
+    
     response = requests.post(api_url, json=payload, headers=headers)
     return response.json()
 
