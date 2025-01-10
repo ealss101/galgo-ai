@@ -47,9 +47,6 @@ def main():
             st.markdown(response)
         except Exception as e:
             st.error(str(e))
-            
-    st.write("APP_TOKEN from Secrets:", st.secrets["APP_TOKEN"])
-
 
 if __name__ == "__main__":
     main()
