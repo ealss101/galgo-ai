@@ -30,7 +30,7 @@ def run_flow(message: str) -> dict:
     return response.json()
 
 def main():
-    st.title("Chat Interface")
+    st.title("galgo ai")
     
     message = st.text_area("Message", placeholder="Ask something...")
     
@@ -43,7 +43,7 @@ def main():
             with st.spinner("Running flow..."):
                 response = run_flow(message)
             
-            response = response["outputs"][0]["outputs"][0]["results"]["message"]["text"]
+            response_text = response["outputs"][0]["outputs"][0]["results"]["text"]["text"]
             st.markdown(response)
         except Exception as e:
             st.error(str(e))
