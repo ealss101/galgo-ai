@@ -7,8 +7,11 @@ import pyrebase
 load_dotenv()
 
 # Local configuration
-APPLICATION_TOKEN = os.environ.get("APP_TOKEN")
-FIREBASE_CONFIG = os.environ.get("FIREBASE_CONFIG")
+# APPLICATION_TOKEN = os.environ.get("APP_TOKEN")
+# FIREBASE_CONFIG = os.environ.get("FIREBASE_CONFIG")
+
+APPLICATION_TOKEN = st.secrets["APP_TOKEN"]
+FIREBASE_CONFIG = st.secrets["FIREBASE_CONFIG"]
 
 # Firebase Configuration
 firebaseConfig = {
@@ -85,7 +88,8 @@ if choice == "Login":
 
 # Sign-Up Functionality
 if choice == "Sign Up":
-    username = st.sidebar.text_input("Enter your username", value="Default")
+    email = st.sidebar.text_input("Enter a valid email", value="")
+    password = st.sidebar.text_input("Create your password", value="")
     submit = st.sidebar.button("Create Account", key="signup_button")
 
     if submit:
@@ -94,7 +98,7 @@ if choice == "Sign Up":
             st.success("Your account was created successfully!")
             st.balloons()
             user = auth.sign_in_with_email_and_password(email, password)
-            db.child(user["localId"]).child("username").set(username)
+            db.child(user["localId"]).child("username").set(email)
             db.child(user["localId"]).child("email").set(email)
             st.info("You can now log in.")
         except Exception as e:
