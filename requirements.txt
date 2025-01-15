@@ -2,5 +2,3 @@ python-dotenv
 streamlit
 requests
 pyrebase
-google-cloud-storage
-pycryptodome
