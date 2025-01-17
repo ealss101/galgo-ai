@@ -89,8 +89,8 @@ if choice == "Login":
 # Sign-Up Functionality
 if choice == "Sign Up":
     with st.sidebar.form("signup_form"):
-        email = st.sidebar.text_input("Enter a valid email", value="")
-        password = st.sidebar.text_input("Create your password", value="")
+        email = st.text_input("Enter a valid email", value="")
+        password = st.text_input("Create your password", value="")
         signup_button = st.form_submit_button("Sign Up")
     
         if signup_button:
