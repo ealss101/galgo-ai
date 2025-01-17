@@ -88,21 +88,22 @@ if choice == "Login":
 
 # Sign-Up Functionality
 if choice == "Sign Up":
-    email = st.sidebar.text_input("Enter a valid email", value="")
-    password = st.sidebar.text_input("Create your password", value="")
-    submit = st.sidebar.button("Create Account", key="signup_button")
-
-    if submit:
-        try:
-            user = auth.create_user_with_email_and_password(email, password)
-            st.success("Your account was created successfully!")
-            st.balloons()
-            user = auth.sign_in_with_email_and_password(email, password)
-            db.child(user["localId"]).child("username").set(email)
-            db.child(user["localId"]).child("email").set(email)
-            st.info("You can now log in.")
-        except Exception as e:
-            st.error(f"Error: {e}")
+    with st.sidebar.form("signup_form"):
+        email = st.sidebar.text_input("Enter a valid email", value="")
+        password = st.sidebar.text_input("Create your password", value="")
+        submit = st.sidebar.button("Create Account", key="signup_button")
+    
+        if submit:
+            try:
+                user = auth.create_user_with_email_and_password(email, password)
+                st.success("Your account was created successfully!")
+                st.balloons()
+                user = auth.sign_in_with_email_and_password(email, password)
+                db.child(user["localId"]).child("username").set(email)
+                db.child(user["localId"]).child("email").set(email)
+                st.info("You can now log in.")
+            except Exception as e:
+                st.error(f"Error: {e}")
 
 # Main Interface with Tabs
 if st.session_state["logged_in"]:
