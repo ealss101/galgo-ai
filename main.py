@@ -91,9 +91,9 @@ if choice == "Sign Up":
     with st.sidebar.form("signup_form"):
         email = st.sidebar.text_input("Enter a valid email", value="")
         password = st.sidebar.text_input("Create your password", value="")
-        submit = st.sidebar.button("Create Account", key="signup_button")
+        signup_button = st.form_submit_button("Sign Up")
     
-        if submit:
+        if signup_button:
             try:
                 user = auth.create_user_with_email_and_password(email, password)
                 st.success("Your account was created successfully!")
