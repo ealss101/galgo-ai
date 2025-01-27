@@ -9,9 +9,9 @@ load_dotenv()
 APPLICATION_TOKEN = os.getenv("APP_TOKEN")
 BASE_API_URL = "https://api.langflow.astra.datastax.com"
 LANGFLOW_ID = "9013a235-fb25-4adc-9095-e285cb8cee04"
-ENDPOINT = "galgo-ai"
+FLOW_ID = "953f00a8-8e75-4ab6-8eab-5f058e7a9496"
+ENDPOINT = "galgo-ai-simple" # The endpoint name of the flow
 
-st.write("CHAT BOT UNDER CONSTRUCTION, OUTPUTS MAY BE WACKY!")
 # Initialize session state
 if "logged_in" not in st.session_state or not st.session_state.get("logged_in", False):
     st.warning("Please log in to use the Chat Bot.")
