@@ -6,23 +6,12 @@ import os
 # Load environment variables
 load_dotenv()
 
-# streamlit auth
-# APPLICATION_TOKEN = st.secrets["APP_TOKEN"]
-# BASE_API_URL = "https://api.langflow.astra.datastax.com"
-# LANGFLOW_ID = "9013a235-fb25-4adc-9095-e285cb8cee04"
-# ENDPOINT = "galgo-ai"
+APPLICATION_TOKEN = os.getenv("APP_TOKEN")
+BASE_API_URL = "https://api.langflow.astra.datastax.com"
+LANGFLOW_ID = "9013a235-fb25-4adc-9095-e285cb8cee04"
+ENDPOINT = "galgo-ai"
 
-# local auth
-# APPLICATION_TOKEN = os.getenv("APP_TOKEN")
-# BASE_API_URL = "https://api.langflow.astra.datastax.com"
-# LANGFLOW_ID = "9013a235-fb25-4adc-9095-e285cb8cee04"
-# ENDPOINT = "galgo-ai" # You can set a specific endpoint name in the flow settings
-
-# docker auth
-BASE_API_URL = "http://localhost:7860"
-FLOW_ID = "844b3bb7-af1c-442c-b233-e61d4850e6d4"
-ENDPOINT = "galgo-ai-simple" # The endpoint name of the flow
-
+st.write("CHAT BOT UNDER CONSTRUCTION, OUTPUTS MAY BE WACKY!")
 # Initialize session state
 if "logged_in" not in st.session_state or not st.session_state.get("logged_in", False):
     st.warning("Please log in to use the Chat Bot.")
@@ -34,17 +23,11 @@ else:
         """
         Sends the user message to the LangFlow API and retrieves the response.
         """
-        # normal auth
-        # api_url = f"{BASE_API_URL}/lf/{LANGFLOW_ID}/api/v1/run/{ENDPOINT}"
-        # headers = {
-        #     "Authorization": f"Bearer {APPLICATION_TOKEN}",
-        #     "Content-Type": "application/json",
-        # }
-
-        # docker auth
-        api_url = f"{BASE_API_URL}/api/v1/run/{ENDPOINT}"
-        headers = None
-        
+        api_url = f"{BASE_API_URL}/lf/{LANGFLOW_ID}/api/v1/run/{ENDPOINT}"
+        headers = {
+            "Authorization": f"Bearer {APPLICATION_TOKEN}",
+            "Content-Type": "application/json",
+        }
         payload = {
             "input_value": message,
             "output_type": "chat",
