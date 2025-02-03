@@ -17,6 +17,11 @@ chat_bot_page = st.Page(
     title="Galgo AI",
     icon=":material/robot:",
 )
+accounting_research_chat_bot_page = st.Page(
+    "views/accounting_research_chat_bot.py",
+    title="Galgo [Accounting Research]",
+    icon=":material/psychology:",
+)
 settings_page = st.Page(
     "views/settings.py",
     title="Settings",
@@ -52,7 +57,7 @@ profile_page = st.Page(
 pg = st.navigation(
     {
         "Account": [login_page, profile_page, settings_page, terms_page],
-        "Features": [chat_bot_page, analytics_page],
+        "Features": [chat_bot_page, accounting_research_chat_bot_page, analytics_page],
         "Info": [about_us_page, instructions_page, support_page],
     }
 )
