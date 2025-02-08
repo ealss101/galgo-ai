@@ -29,6 +29,14 @@ if "logged_in" not in st.session_state or not st.session_state.get("logged_in", 
     
 
 else:
+
+    st.info(
+        "**Accounting Researcher**\n\n"
+        "- Your AI-powered guide for financial accounting research.\n"
+        "- Instantly search and retrieve financial accounting papers from your OneDrive.\n"
+        "- Get AI-driven insights, summaries, and explanations on complex accounting topics.\n"
+    )
+
     if "messages_research" not in st.session_state:
         st.session_state.messages_research = []
 
