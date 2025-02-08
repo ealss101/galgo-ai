@@ -27,6 +27,13 @@ ENDPOINT = "galgo-ai-simple"
 if "logged_in" not in st.session_state or not st.session_state.get("logged_in", False):
     st.warning("Please log in to use the Chat Bot.")
 else:
+
+    st.info(
+        "**All In Agent**\n\n"
+        "- Go *all in* with your personal communication & knowledge assistant\n"
+        "- Tools included: Gmail, Google Calendar, Google Drive, OneDrive, Yahoo Finance, Wikipedia, Reddit, Github.\n"
+    )
+        
     if "messages_simple" not in st.session_state:
         st.session_state.messages_simple = []
 
