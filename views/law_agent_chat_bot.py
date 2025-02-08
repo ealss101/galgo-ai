@@ -7,10 +7,10 @@ import os
 load_dotenv()
 
 # streamlit auth
-APPLICATION_TOKEN = st.secrets["APP_TOKEN_RESEARCH"]
+APPLICATION_TOKEN = st.secrets["APP_TOKEN_LAW"]
 BASE_API_URL = "https://api.langflow.astra.datastax.com"
 LANGFLOW_ID = "9013a235-fb25-4adc-9095-e285cb8cee04"
-ENDPOINT = "accounting-research" 
+ENDPOINT = "lawyer-agent"
 
 # local auth
 # APPLICATION_TOKEN = os.getenv("APP_TOKEN_LAW")
